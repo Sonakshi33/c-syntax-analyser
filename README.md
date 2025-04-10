@@ -1,59 +1,66 @@
 # c-syntax-analyser
-✨ C Syntax Analyser
+## ✨ C Syntax Analyser
+
 This project implements a syntax analyser for C programs. It demonstrates the compiler front-end process, focusing on lexical and syntax analysis.
-🧠 Concepts Covered
-a. Two Phases of Compilation:
 
-Lexical Analysis: Produces streams of tokens from the source code.
+---
+## 🧠 Concepts Covered
 
-Syntax Analysis: Validates the tokens (e.g., checking if int main() is valid).
+**a. Two Phases of Compilation:**
 
-b. Tools Used:
+-Lexical Analysis: Produces streams of tokens from the source code.
 
-Lex, C, Parser Generator (Yacc/Bison)
+-Syntax Analysis: Validates the tokens (e.g., checking if int main() is valid).
 
-c. Understanding:
+**b. Tools Used:**
 
-How source code is processed and validated before execution.
+-Lex, C, Parser Generator (Yacc/Bison)
 
-d. Parsing Techniques:
+**c. Understanding:**
 
-LL(1), LR(1)
+-How source code is processed and validated before execution.
 
-e. Implementation:
+**d. Parsing Techniques:**
 
-Built using parser generator Yacc (or Bison).
+-LL(1), LR(1)
 
-f. Grammar and Tokens:
+**e. Implementation:**
 
-Define token types and grammar rules to check syntax.
+-Built using parser generator Yacc (or Bison).
 
-g. Lexical Analysis:
+**f. Grammar and Tokens:**
 
-Tokenizes source code into meaningful units.
+--Define token types and grammar rules to check syntax.
 
-h. Flow of Execution:
+**g. Lexical Analysis:**
 
-C Code → Lexical Analyser → Token Stream → Syntax Analysis →
+--Tokenizes source code into meaningful units.
+
+**h. Flow of Execution:**
+
+-C Code → Lexical Analyser → Token Stream → Syntax Analysis →
 → Parse Tree (if valid) / Error Message (if invalid)
 
-⚙️ Installed Tools
-Lex
+---
 
-Yacc/Bison
+##⚙️ Installed Tools
 
-GCC Compiler
+-Lex
 
-Linux Environment (e.g., WSL or Ubuntu)
+-Yacc/Bison
 
-📂 How to Run
+-GCC Compiler
+
+---
+
+##Linux Environment (e.g., WSL or Ubuntu)
+
+---
+##📂 How to Run
+
 Write your Lex (.l) and Yacc (.y) files.
 
 Compile using:
-
-bash
-Copy
-Edit
 lex file.l
 yacc -d file.y
 gcc lex.yy.c y.tab.c -o analyser
