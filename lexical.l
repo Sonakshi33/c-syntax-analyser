@@ -12,11 +12,11 @@
 [0-9]+(\.[0-9]+)?    { printf("Number: %s\n", yytext); }
 [a-zA-Z_][a-zA-Z0-9_]*   { printf("Identifier: %s\n", yytext); }
 "=="|"="|"+"|"-"|"*"|"/" { printf("Operator: %s\n", yytext); }
-"("             { printf("Symbol: (\n"); }
-")"             { printf("Symbol: )\n"); }
-"{"             { printf("Symbol: {\n"); }
-"}"             { printf("Symbol: }\n"); }
-";"             { printf("Symbol: ;\n"); }
+"("             { printf("Symbol: %s\n", yytext); }
+")"             { printf("Symbol: %s\n", yytext); }
+"{"             { printf("Symbol: %s\n", yytext); }
+"}"             { printf("Symbol: %s\n", yytext); }
+";"             { printf("Symbol: %s\n", yytext); }
 [ \t\n]         { /* ignore whitespace */ }
 .               { printf("Unknown character: %s\n", yytext); }
 %%
