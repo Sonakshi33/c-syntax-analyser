@@ -1,7 +1,6 @@
 %{
 #include <stdio.h>
 %}
-
 %%
 "int"           { printf("Keyword: int\n"); }
 "float"         { printf("Keyword: float\n"); }
@@ -12,15 +11,10 @@
 [0-9]+(\.[0-9]+)?    { printf("Number: %s\n", yytext); }
 [a-zA-Z_][a-zA-Z0-9_]*   { printf("Identifier: %s\n", yytext); }
 "=="|"="|"+"|"-"|"*"|"/" { printf("Operator: %s\n", yytext); }
-"("             { printf("Symbol: %s\n", yytext); }
-")"             { printf("Symbol: %s\n", yytext); }
-"{"             { printf("Symbol: %s\n", yytext); }
-"}"             { printf("Symbol: %s\n", yytext); }
-";"             { printf("Symbol: %s\n", yytext); }
+[\(\)\{\};]     { printf("Symbol: %s\n", yytext); }
 [ \t\n]         { /* ignore whitespace */ }
 .               { printf("Unknown character: %s\n", yytext); }
 %%
-
 int main() {
     yylex();
     return 0;
