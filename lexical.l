@@ -1,17 +1,30 @@
 %{
-#include "y.tab.h"
+#include <stdio.h>
+#include <stdlib.h>
 %}
 
-%%
-"int"           { return INT; }
-"float"         { return FLOAT; }
-[0-9]+\.[0-9]+  { return NUMBER; }
-[0-9]+          { return NUMBER; }
-[a-zA-Z_][a-zA-Z0-9_]*  { return ID; }
-"="             { return '='; }
-";"             { return ';'; }
-[ \t\n]         { /* ignore whitespace */ }
-.               { return yytext[0]; }
+DIGIT       [0-9]*
+LETTER      [a-zA-Z_]
+KEYWORD     (auto|break|case|char|const|continue|default|do|double|else|enum|extern|float|for|goto|if|inline|int|long|register|restrict|return|short|signed|sizeof|static|struct|switch|typedef|union|unsigned|void|volatile|while)
+OPERATOR    (\+|\-|\*|\/|\=|\%|\&|\||\^|\~|\<|\>|\=|\+=|\-=|\*=|\/=|\%=|\&=|\|=|\^=|\<<|\>>|\==|\!=|\<=|\>=|\&\&|\|\||\?\:|\++|\--|\!\=)
+SPECIALSYM  (\{|\}|\(|\)|\[|\]|\;|\:|\,|\.)  
+LITERAL     [0-9]+(\.[0-9]+)?|\"[^\"]*\"  
+COMMENT     (\/\/[^\n]*|\/\*.*?\*\/)  
 %%
 
-int yywrap() { return 1; }
+{KEYWORD}        { printf("Keyword: %s\n", yytext); }
+{LETTER}({LETTER}|{DIGIT})*    { printf("Identifier: %s\n", yytext); }
+{LITERAL}        { printf("Literal: %s\n", yytext); }
+{OPERATOR}       { printf("Operator: %s\n", yytext); }
+{SPECIALSYM}     { printf("Special Symbol: %s\n", yytext); }
+{COMMENT}        { /* Ignore comments */ }
+{DIGIT}        {printf("Digit: %s\n",yytext);}
+%%
+
+int main() {
+    yylex();
+    return 0;
+}
+int yywrap(){
+    return 1;
+}
